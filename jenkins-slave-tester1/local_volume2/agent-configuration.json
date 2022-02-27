@@ -1,0 +1,19 @@
+{
+    "bindIp" : "0.0.0.0",
+    "bindPort": 8585,
+    "bindSecurePort": 8443,
+
+    "httpProxyEnabled" : false,
+    "httpsProxyHost": null,
+    "httpsProxyPort": 0,
+    "httpProxyUser": null,
+    "httpProxyPassword" : null,
+
+    "socksProxyEnabled" : false,
+    "socksProxyHost" : null,
+    "socksProxyPort": 0,
+    "socksProxyUser": null,
+    "socksProxyPassword" : null,
+
+    "maxWorkers" : 0
+}

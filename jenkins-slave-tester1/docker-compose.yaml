@@ -1,0 +1,22 @@
+version: "3.1"
+services:
+  testproject-agent:
+    image: testproject/agent:latest
+    container_name: testproject-agent
+    depends_on:
+      - chrome
+      - firefox
+    volumes:
+      - C:/Users/Girish-Nair/Documents/GitHub/cosmicnode/jenkins-slave-tester1/local_volume2:/var/testproject/agent
+    environment:
+      TP_API_KEY: "UjbTl1HrgmGfKttJ9yi6zSXAYJunczj6r6kl0r2PI-81"
+      #TP_JOB_ID: "zqLMmIC6nUmsSuvQuZjzyw"
+      #TP_JOB_PARAMS: '"jobParameters" : { "browsers" : ["Chrome","FireFox"], "testParameters": [{ "data": [{ "ApplicationURL": "https://example.testproject.io/web", "FirstName": "John", "LastName": "Travolta"}]}]}'
+      TP_AGENT_PARAMS: "DockerPersistentAgent"
+      FIREFOX: "firefox:4444"
+  chrome:
+    image: selenium/standalone-chrome
+    shm_size: '1gb'
+  firefox:
+    image: selenium/standalone-firefox
+    shm_size: '1gb'
