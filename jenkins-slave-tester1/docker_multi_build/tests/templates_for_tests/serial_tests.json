@@ -1,0 +1,9 @@
+{
+  "test_name": "sample_test",
+  "serial_com_port": "COM5",
+  "serial_port_type": "",
+  "verifications":[{
+    "assertion_type": "assertequals",
+    "expected_value": "sample_value"
+  }]
+}

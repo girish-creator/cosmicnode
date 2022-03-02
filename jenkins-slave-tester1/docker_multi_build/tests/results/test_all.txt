@@ -1,0 +1,9 @@
+test_new_all (tests.test_all.AllTests) ... ok
+test_new (tests.test_api.ApiTests) ... ok
+test_new_mqtt (tests.test_mqtt.MqttTests) ... ok
+test_new_serial (tests.test_serial.SerialTests) ... ok
+
+----------------------------------------------------------------------
+Ran 4 tests in 2.206s
+
+OK

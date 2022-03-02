@@ -1,0 +1,9 @@
+{
+  "test_name": "sample_test",
+  "api_to_test": "https://chercher.tech/sample/api/product/read?id=90",
+  "verifications":[{
+    "assertion_type": "assertequals",
+    "expected_value": "sample_value",
+    "actual_value": ""
+  }]
+}
