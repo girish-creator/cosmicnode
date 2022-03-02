@@ -9,7 +9,6 @@ def run(file_name=None, output=sys.stderr, verbosity=2):
         # Only run the tests from the given module
         tests = unittest.TestLoader().discover(start_dir=os.path.join(configuration.ROOT_PATH, 'tests'),
                                                pattern=file_name, top_level_dir=configuration.ROOT_PATH)
-        pass
     else:
         # run all the tests from all the test_* files
         tests = unittest.TestLoader().discover(start_dir=os.path.join(configuration.ROOT_PATH, 'tests'),

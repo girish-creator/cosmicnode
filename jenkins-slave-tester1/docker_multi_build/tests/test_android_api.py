@@ -13,4 +13,3 @@ class AndroidApiTests(unittest.TestCase):
     def test_new_android(self):
         response = requests.get('https://chercher.tech/sample/api/product/read?id=90')
         self.assertEquals(response.status_code, 200)
-
