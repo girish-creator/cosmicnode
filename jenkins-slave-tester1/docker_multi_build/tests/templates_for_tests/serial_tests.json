@@ -1,9 +1,64 @@
 {
   "test_name": "sample_test",
-  "serial_com_port": "COM5",
-  "serial_port_type": "",
-  "verifications":[{
-    "assertion_type": "assertequals",
-    "expected_value": "sample_value"
-  }]
+  "api_list":
+  [
+    {
+      "operation": "GET",
+      "api_endpoint": "",
+      "api_verifications":
+      [
+        {
+          "assertion_type": "assertEquals",
+          "assertion_parameter": "sample_value",
+          "expected_value": 200
+        }]
+    },
+    {
+      "operation": "POST",
+      "api_endpoint": "",
+      "payload": "",
+      "headers": "",
+      "api_verifications":
+      [
+        {
+          "assertion_type": "assertEquals",
+          "assertion_parameter": "sample_value",
+          "expected_value": 200
+        }]
+    },
+    {
+      "operation": "PUT",
+      "api_endpoint": "",
+      "payload": "",
+      "headers": "",
+      "api_verifications":
+      [
+        {
+          "assertion_type": "assertEquals",
+          "assertion_parameter": "sample_value",
+          "expected_value": 200
+        }]
+    },
+    {
+      "operation": "DELETE",
+      "api_endpoint": "",
+      "api_verifications":
+      [
+        {
+          "assertion_type": "assertEquals",
+          "assertion_parameter": "sample_value",
+          "expected_value": 200
+        }]
+    }
+  ],
+  "serial": [{
+    "operation":  "read",
+    "serial_verifications":
+    [
+      {
+        "assertion_type": "assertEquals",
+        "assertion_parameter": "sample_value",
+        "expected_value": "serial message content to find in the mqtt logs"
+      }
+  ]}]
 }

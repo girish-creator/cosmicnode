@@ -1,9 +1,0 @@
-{
-  "test_name": "sample_test",
-  "mqtt_client_link": "https://chercher.tech/sample/api/product/read?id=90",
-  "mqtt_client_port": "",
-  "verifications":[{
-    "assertion_type": "assertequals",
-    "expected_value": "sample_value"
-  }]
-}

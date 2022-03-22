@@ -74,15 +74,5 @@
         "assertion_parameter": "sample_value",
         "expected_value": "mqtt messages contents to find in the mqtt client logs"
       }
-  ]}],
-  "serial": [{
-    "operation":  "read",
-    "serial_verifications":
-    [
-      {
-        "assertion_type": "assertEquals",
-        "assertion_parameter": "sample_value",
-        "expected_value": "serial message content to find in the mqtt logs"
-      }
   ]}]
 }

@@ -17,7 +17,9 @@ def run(file_name=None, output=sys.stderr, verbosity=2):
 
 
 if __name__ == "__main__":
-    module_name = 'test_android_api.py'
-    with open(os.path.join(configuration.ROOT_PATH, 'tests', 'results', 'test_all.txt'), 'w+') as file_obj:
-        run(output=file_obj)
+    module_names = ['test_android_api.py', 'test_api.py']
+    for module_name in module_names:
+        result_file_name = "result_" + module_name.split('.')[0] + ".txt"
+        with open(os.path.join(configuration.ROOT_PATH, 'tests', 'results', result_file_name), 'w+') as file_obj:
+            run(file_name=module_name, output=file_obj)
 

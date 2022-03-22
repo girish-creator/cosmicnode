@@ -1,9 +1,25 @@
 {
   "test_name": "sample_test",
-  "api_to_test": "https://chercher.tech/sample/api/product/read?id=90",
-  "verifications":[{
-    "assertion_type": "assertequals",
-    "expected_value": "sample_value",
-    "actual_value": ""
+  "api_list": [{
+    "operation": "GET",
+    "api_endpoint": "https://chercher.tech/sample/api/product/read?id=90",
+  }, {
+    "operation": "POST",
+    "api_endpoint": "https://chercher.tech/sample/api/product/read?id=90",
+    "payload": "{\"cmd\":51,\"address\":32827,\"params\":[1,1,0,0,0]}",
+    "headers": "{'Content-Type': 'text/plain'}"
+  }, {
+    "operation": "PUT",
+    "api_endpoint": "https://chercher.tech/sample/api/product/read?id=90",
+    "payload": "{\"cmd\":51,\"address\":32827,\"paramsp\":[1,1,0,0,0]}",
+    "headers": "{'Content-Type': 'text/plain'}"
+  }, {
+    "operation": "DELETE",
+    "api_endpoint": "https://chercher.tech/sample/api/product/read?id=90"
+  }],
+  "api_verifications":[{
+    "assertion_type": "assertEquals",
+    "assertion_parameter": "sample_value",
+    "expected_value": 200
   }]
 }
