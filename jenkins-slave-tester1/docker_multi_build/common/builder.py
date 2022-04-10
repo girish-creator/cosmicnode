@@ -9,12 +9,10 @@ class TestBuilderException(Exception):
 
 
 class TestBuilder:
-    def __init__(self, test_name, mqtt_message_check=False, serial_message_check=False, argument_dict=dict):
+    def __init__(self, test_name, argument_dict=dict):
         self.logger = logging.getLogger(name="builder.log")
         self.test_name = test_name
         self.argument_dict = argument_dict
-        self.mqtt_message_check = mqtt_message_check
-        self.serial_message_check = serial_message_check
         self.test_folder_path = os.path.join(configuration.ROOT_PATH, "tests")
         self.test_template_path = os.path.join(self.test_folder_path, "templates_for_tests")
         self.complete_text = ""
@@ -33,27 +31,35 @@ class TestBuilder:
 
     def get_module_name(self):
         try:
-            if (self.mqtt_message_check is True) and (self.serial_message_check is True):
+            if ('serial' in self.argument_dict) and ('mqtt' in self.argument_dict):
                 self.module_name = "test_all.py"
                 self.template_name = "all_tests.json"
                 self.verify_test_arguments(api_list=True, mqtt_message_check=True,
                                            serial_message_check=True)
-            elif self.mqtt_message_check is True:
+                self.test_name = 'test_all_' + self.test_name
+            elif 'mqtt' in self.argument_dict:
                 self.module_name = "test_api_mqtt.py"
                 self.template_name = "api_mqtt_tests.json"
                 self.verify_test_arguments(api_list=True, mqtt_message_check=True)
-            elif self.serial_message_check is True:
+                self.test_name = 'test_mqtt_' + self.test_name
+            elif 'serial' in self.argument_dict:
                 self.module_name = "test_serial.py"
                 self.template_name = "serial_tests.json"
                 self.verify_test_arguments(api_list=True, serial_message_check=True)
+                self.test_name = 'test_serial_' + self.test_name
             elif str(self.test_name).__contains__('android'):
-                self.module_name = "test_android_api.py"
-                self.template_name = "android_api_tests.json"
-                self.verify_test_arguments(android_api_list=True)
+                if 'android' in self.argument_dict:
+                    self.module_name = "test_android_api.py"
+                    self.template_name = "android_api_tests.json"
+                    self.verify_test_arguments(android_api_list=True)
+                    self.test_name = 'test_android_' + self.test_name
+                else:
+                    raise TestBuilderException("Insufficient argument for creating android test")
             else:
                 self.module_name = "test_api.py"
                 self.template_name = "api_tests.json"
                 self.verify_test_arguments(api_list=True)
+                self.test_name = 'test_api_' + self.test_name
         except Exception as error:
             raise TestBuilderException(str.format("builder: get_module_name: {0}", error))
 
@@ -246,7 +252,7 @@ class TestBuilder:
         try:
             assert_statements = list()
             for verification_dict in element:
-                if num:
+                if num is not None:
                     assert_statements.append(str.format("self.{0}(response_{1}.{2}, {3})",
                                                         verification_dict['assertion_type'], num,
                                                         verification_dict['assertion_parameter'],
@@ -281,7 +287,7 @@ class TestBuilder:
         try:
             assert_statements = list()
             for verification_dict in element:
-                assert_statements.append(str.format("self.{0}({1}, {2})", verification_dict['assertion_type'],
+                assert_statements.append(str.format("self.{0}({1}, '{2}')", verification_dict['assertion_type'],
                                                     'configuration.MQTT_MESSAGE_RX',
                                                     verification_dict['expected_value']))
             ver_steps = ""
@@ -290,25 +296,6 @@ class TestBuilder:
             return ver_steps
         except Exception as error:
             raise TestBuilderException(str.format("builder: generate_get_api_test_from_json: {0}", error))
-
-    def generate_post_api_test_from_json(self, json_template):
-        try:
-            function_name = str.format("def {0}(self)", json_template['test_name'])
-            requests_get_statement = str.format("response = requests.post('{0}')", json_template['api_to_test'])
-            assert_statements = list()
-            for verification_dict in json_template['verifications']:
-                assert_statements.append(str.format("self.{0}(response.{1}, {2})", verification_dict['assertion_type'],
-                                                    verification_dict['assertion_parameter'],
-                                                    verification_dict['expected_value']))
-            part_one_test = str.format("\n    {0}:\n"
-                                       "        {1}\n", function_name, requests_get_statement)
-            ver_steps = ""
-            for item in assert_statements:
-                ver_steps = ver_steps + str.format("        {0}\n", item)
-
-            self.complete_text = part_one_test + ver_steps
-        except Exception as error:
-            raise TestBuilderException(str.format("builder: generate_post_api_test_from_json: {0}", error))
 
     def write_data_to_test_file(self):
         try:
@@ -327,7 +314,16 @@ class TestBuilder:
 
 
 if __name__ == "__main__":
-    args = {'api_list': [{"api_endpoint": "http://192.168.1.27/rpc/Command.PWM",
+    args_api = {'api_list': [{"api_endpoint": "http://192.168.1.27/rpc/Command.PWM",
+                          "operation": "POST",
+                          "payload": "{\"cmd\":210,\"address\":65535,\"params\":[50]}",
+                          "headers": "{'Content-Type': 'application/json'}",
+                          'api_verifications': [{"assertion_type": "assertEquals", "assertion_parameter": "status_code",
+                                                 "expected_value": 200}
+                                                ]
+                          }]
+            }
+    args_api_mqtt = {'api_list': [{"api_endpoint": "http://192.168.1.27/rpc/Command.PWM",
                           "operation": "POST",
                           "payload": "{\"cmd\":210,\"address\":65535,\"params\":[50]}",
                           "headers": "{'Content-Type': 'application/json'}",
@@ -335,11 +331,64 @@ if __name__ == "__main__":
                                                  "expected_value": 200}
                                                 ]
                           }],
-            'serial': [{'operation': 'READ',
-                        'serial_verifications': [{"assertion_type": "assertEquals", "assertion_parameter": "message",
-                                                  "expected_value": "'LGT_CMD_LIGHT_BRIGHTNESS: 5'"}]}
-                     ]
-            }
-    test_builder_obj = TestBuilder(test_name='test_cossmsisc_api1', mqtt_message_check=False, serial_message_check=True,
-                                   argument_dict=args)
+                     'mqtt': [{'operation': 'subscribe',
+                          'topic': 'test/girish/msg',
+                          'message': 'Hello World!',
+                          'mqtt_verifications': [{"assertion_type": "assertEquals", "assertion_parameter": "message",
+                                                  "expected_value": "Hello World!"},
+                                                 {"assertion_type": "assertEquals", "assertion_parameter": "message",
+                                                  "expected_value": "Hello World!"}]},
+                         {'operation': 'publish',
+                          'topic': 'test/girish/msg',
+                          'message': 'Hello World!',
+                          'mqtt_verifications': [{"assertion_type": "assertEquals", "assertion_parameter": "message",
+                                                  "expected_value": "mqtt message content to find in the mqtt logs"},
+                                                 {"assertion_type": "assertEquals", "assertion_parameter": "message",
+                                                  "expected_value": "mqtt messages contents to find in the mqtt "
+                                                                    "client logs"}]}
+                         ],
+                    }
+    args_api_serial = {'api_list': [{"api_endpoint": "http://192.168.1.27/rpc/Command.PWM",
+                          "operation": "POST",
+                          "payload": "{\"cmd\":210,\"address\":65535,\"params\":[50]}",
+                          "headers": "{'Content-Type': 'application/json'}",
+                          'api_verifications': [{"assertion_type": "assertEquals", "assertion_parameter": "status_code",
+                                                 "expected_value": 200}
+                                                ]
+                          }],
+                       'serial': [{'operation': 'READ',
+                            'serial_verifications': [{"assertion_type": "assertEquals", "assertion_parameter": "message",
+                                                      "expected_value": "'LGT_CMD_LIGHT_BRIGHTNESS: 5'"}]}
+                         ]
+                }
+    args_all = {'api_list': [{"api_endpoint": "http://192.168.1.27/rpc/Command.PWM",
+                          "operation": "POST",
+                          "payload": "{\"cmd\":210,\"address\":65535,\"params\":[50]}",
+                          "headers": "{'Content-Type': 'application/json'}",
+                          'api_verifications': [{"assertion_type": "assertEquals", "assertion_parameter": "status_code",
+                                                 "expected_value": 200}
+                                                ]
+                          }],
+                       'serial': [{'operation': 'READ',
+                            'serial_verifications': [{"assertion_type": "assertEquals", "assertion_parameter": "message",
+                                                      "expected_value": "'LGT_CMD_LIGHT_BRIGHTNESS: 50'"}]}
+                         ],
+                     'mqtt': [{'operation': 'subscribe',
+                          'topic': 'test/girish/msg',
+                          'message': 'Hello World!',
+                          'mqtt_verifications': [{"assertion_type": "assertEquals", "assertion_parameter": "message",
+                                                  "expected_value": "Hello World!"},
+                                                 {"assertion_type": "assertEquals", "assertion_parameter": "message",
+                                                  "expected_value": "Hello World!"}]},
+                         {'operation': 'publish',
+                          'topic': 'test/girish/msg',
+                          'message': 'Hello World!',
+                          'mqtt_verifications': [{"assertion_type": "assertEquals", "assertion_parameter": "message",
+                                                  "expected_value": "mqtt message content to find in the mqtt logs"},
+                                                 {"assertion_type": "assertEquals", "assertion_parameter": "message",
+                                                  "expected_value": "mqtt messages contents to find in the mqtt "
+                                                                    "client logs"}]}
+                         ],
+                }
+    test_builder_obj = TestBuilder(test_name='cossmsisc_api1', argument_dict=args_all)
     test_builder_obj.run()

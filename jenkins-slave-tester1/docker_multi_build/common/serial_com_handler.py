@@ -31,6 +31,8 @@ class SerialConn:
             while loop:
                 count += 1
                 for serial_line in self.serial_obj.read():
+                    xt = type(serial_line)
+                    xts = str(serial_line)
                     char_string = char_string + str(chr(serial_line))
                     if "\n" in chr(serial_line):
                         loop = False

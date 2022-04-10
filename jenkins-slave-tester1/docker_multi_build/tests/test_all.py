@@ -92,3 +92,23 @@ class AllTests(unittest.TestCase):
         self.assertEquals(configuration.MQTT_MESSAGE_RX, 'mqtt message content to find in the mqtt logs')
         self.assertEquals(configuration.MQTT_MESSAGE_RX, 'mqtt messages contents to find in the mqtt client logs')
 
+
+    def test_all_cossmsisc_api1(self):
+        response_0 = requests.post('http://192.168.1.27/rpc/Command.PWM', headers={'Content-Type': 'application/json'}, json={"cmd":210,"address":65535,"params":[50]})
+        self.assertEquals(response_0.status_code, 200)
+
+        message = self.ser_obj.wait_for_message()
+        self.assertEquals(message, 'LGT_CMD_LIGHT_BRIGHTNESS: 50')
+
+        mqtt_client_0 = mqtt_handler.MqttHandler()
+        mqtt_client_0.make_connection()
+        mqtt_client_0.subscribe_topic('test/girish/msg', 'Hello World!')
+        self.assertEquals(configuration.MQTT_MESSAGE_RX, 'Hello World!')
+        self.assertEquals(configuration.MQTT_MESSAGE_RX, 'Hello World!')
+
+        mqtt_client_1 = mqtt_handler.MqttHandler()
+        mqtt_client_1.make_connection()
+        mqtt_client_1.publish_topic('test/girish/msg', 'Hello World!')
+        self.assertEquals(configuration.MQTT_MESSAGE_RX, 'mqtt message content to find in the mqtt logs')
+        self.assertEquals(configuration.MQTT_MESSAGE_RX, 'mqtt messages contents to find in the mqtt client logs')
+
