@@ -18,6 +18,9 @@ RUN apt-get install -y python3-pip
 RUN apt-get install -y mosquitto
 RUN apt-get install -y mosquitto-clients
 
+# install docker
+RUN apt-get install docker-ce docker-ce-cli container.io
+
 # install build-essential
 RUN apt-get install -y build-essential
 
