@@ -1,6 +1,6 @@
 pipeline {
   agent {
-    docker { image 'node:16-alpine' }
+    docker { image 'cosmicnode/node_tester:v1' }
   }
   stages {
     stage('Test') {
