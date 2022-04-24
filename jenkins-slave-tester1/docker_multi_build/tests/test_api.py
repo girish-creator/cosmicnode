@@ -1,6 +1,5 @@
 import unittest
 import requests
-import os
 
 
 class ApiTests(unittest.TestCase):
@@ -25,6 +24,7 @@ class ApiTests(unittest.TestCase):
         self.assertEquals(response.status_code, 200)
 
     def test_new_gassdtpp(self):
+        print('passed')
         response = requests.get('https://chercher.tech/sample/api/product/read?id=90')
         self.assertEquals(response.status_code, 200)
         self.assertEqual(response.status_code, 300)
@@ -42,3 +42,6 @@ class ApiTests(unittest.TestCase):
         response_0 = requests.post('http://192.168.1.27/rpc/Command.PWM', headers={'Content-Type': 'application/json'}, json={"cmd":210,"address":65535,"params":[50]})
         self.assertEquals(response_0.status_code, 200)
 
+
+if __name__ == '__main__':
+    unittest.main()

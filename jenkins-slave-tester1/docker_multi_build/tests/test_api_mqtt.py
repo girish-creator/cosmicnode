@@ -53,3 +53,6 @@ class MqttTests(unittest.TestCase):
         self.assertEquals(configuration.MQTT_MESSAGE_RX, 'mqtt message content to find in the mqtt logs')
         self.assertEquals(configuration.MQTT_MESSAGE_RX, 'mqtt messages contents to find in the mqtt client logs')
 
+
+if __name__ == '__main__':
+    unittest.main()

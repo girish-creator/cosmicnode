@@ -36,3 +36,6 @@ class SerialTests(unittest.TestCase):
         message = self.ser_obj.wait_for_message()
         self.assertEquals(message, 'LGT_CMD_LIGHT_BRIGHTNESS: 5')
 
+
+if __name__ == '__main__':
+    unittest.main()

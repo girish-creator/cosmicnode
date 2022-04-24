@@ -2,7 +2,7 @@ FROM ubuntu:latest
 
 MAINTAINER cosmicnode girikripa@outlook.com
 
-# run update 
+# run update
 RUN apt-get update && \
     apt-get install -y software-properties-common && \
     rm -rf /var/lib/apt/lists/*
@@ -33,4 +33,5 @@ RUN pip3 install -r requirements.txt
 COPY . .
 
 # run a few commands
-CMD [ "python3", "-m" , "flask", "run", "--host=0.0.0.0"]
+#CMD [ "python3", "-m" , "flask", "run", "--host=0.0.0.0"]
+CMD [ "python3", "./common/runner.py"]
