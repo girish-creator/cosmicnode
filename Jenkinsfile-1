@@ -11,6 +11,7 @@ pipeline {
             }
             steps {
                 sh 'python3 --version'
+                sh 'docker run cosmicnode/node-tester:v2'
             }
         }
     }
