@@ -6,6 +6,7 @@ pipeline {
     stage('Test') {
       steps {
         sh 'ls -l'
+        sh 'docker run cosmicnode/node-tester:v2'
       }
     }
   }
