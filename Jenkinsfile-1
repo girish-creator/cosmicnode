@@ -1,13 +1,17 @@
 pipeline {
-  agent {
-    docker { image 'cosmicnode/node-tester:v2' }
-  }
-  stages {
-    stage('Test') {
-      steps {
-        sh 'ls -l'
-        sh 'docker run cosmicnode/node-tester:v2'
-      }
+    agent any
+    stages {
+        stage('Build') {
+            agent {
+                docker {
+                    image 'cosmicnode/node-tester:v2'
+                    // Run the container on the node specified at the top-level of the Pipeline, in the same workspace, rather than on a new node entirely:
+                    reuseNode true
+                }
+            }
+            steps {
+                sh 'python3 --version'
+            }
+        }
     }
-  }
 }
