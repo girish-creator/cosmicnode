@@ -11,7 +11,7 @@ pipeline {
             }
             steps {
                 sh 'python3 --version'
-                sh 'docker run cosmicnode/node-tester:v2'
+                sh 'python jenkins-slave-tester1/docker_multi_build/common/runner.py'
             }
         }
     }
