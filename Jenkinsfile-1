@@ -1,12 +1,12 @@
 pipeline {
-  agent {
-    docker { image 'cosmicnode/node_tester:v1' }
-  }
-  stages {
-    stage('Test') {
-      steps {
-        sh 'docker run node_tester:v2'
-      }
+    agent { dockerfile true }
+    stages {
+        stage('Test') {
+            steps {
+                sh 'git --version'
+                sh 'docker --version'
+                sh 'docker run node_tester:v2'
+            }
+        }
     }
-  }
 }
