@@ -27,7 +27,6 @@ class ApiTests(unittest.TestCase):
         print('passed')
         response = requests.get('https://chercher.tech/sample/api/product/read?id=90')
         self.assertEquals(response.status_code, 200)
-        self.assertEqual(response.status_code, 300)
 
     def test_cosmic_api1(self):
         payload = "{\"cmd\":51,\"address\":32827,\"params\":[1,1,0,0,0]}"
