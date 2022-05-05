@@ -23,7 +23,7 @@ class MqttHandler:
         print(os.path.join(configuration.ROOT_PATH, 'jenkins-slave-tester1', 'docker_multi_build', "ca.crt"))
         self.client.tls_set(os.path.join(configuration.ROOT_PATH, 'jenkins-slave-tester1', 'docker_multi_build',
                                          "ca.crt"), tls_version=ssl.PROTOCOL_TLSv1_2)
-        self.client.tls_insecure_set(True)
+        #self.client.tls_insecure_set(True)
         self.client.connect(self.mqtt_server, self.mqtt_port, self.mqtt_keep_alive)
         self.logger.info(str.format("Successfully connected to broker {0}", self.mqtt_server))
 
