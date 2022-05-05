@@ -22,6 +22,7 @@ class MqttHandler:
         self.client.username_pw_set(username="5qSJjR8c8GBHpQTM", password="plaVW4Q9NXTvY8lu")
         print(os.path.join(configuration.CA_CERTIFICATE_PATH, "ca.crt"))
         self.client.tls_set(os.path.join(configuration.CA_CERTIFICATE_PATH, "ca.crt"), tls_version=ssl.PROTOCOL_TLSv1_2)
+        self.client.tls_insecure_set(True)
         self.client.connect(self.mqtt_server, self.mqtt_port, self.mqtt_keep_alive)
         self.logger.info(str.format("Successfully connected to broker {0}", self.mqtt_server))
 
