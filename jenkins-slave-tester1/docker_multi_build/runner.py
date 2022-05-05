@@ -27,6 +27,8 @@ def run(file_name=None, verbosity=2):
     with open('./results.txt', 'a') as output:
         unittest.TextTestRunner(output, verbosity=verbosity).run(tests)
     print('completed')
+    with open('./results.txt', 'r') as output:
+        print(output.read())
 
 
 if __name__ == "__main__":
