@@ -1,5 +1,5 @@
 import unittest
-import configuration
+from common import configuration
 import os
 import sys
 
