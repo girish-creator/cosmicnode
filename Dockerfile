@@ -1,6 +1,6 @@
 FROM ubuntu:latest
 
-MAINTAINER cosmicnode girikripa@outlook.com
+MAINTAINER cosmicnode girikripa@gmail.com
 
 # run update
 RUN apt-get update && \
@@ -24,7 +24,7 @@ RUN apt-get install -y build-essential
 # make a clean apt
 RUN apt clean
 
-WORKDIR /app
+#WORKDIR /app
 
 # copy files from local host to docker container
 COPY requirements.txt requirements.txt
