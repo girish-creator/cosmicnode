@@ -22,7 +22,7 @@ def run(file_name=None, verbosity=2):
                                                pattern='test_*.py', top_level_dir=configuration.ROOT_PATH)
 
     print(tests)
-    with open('./results.txt', 'w') as output:
+    with open('./results.txt', 'a') as output:
         unittest.TextTestRunner(output, verbosity=verbosity).run(tests)
     print('completed')
 
