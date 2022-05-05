@@ -8,6 +8,6 @@ SERIAL_NODE_COM_PORT = "/dev/ttyUSB2"
 VOLUME = ""
 ROOT_PATH = os.getcwd()
 #ROOT_PATH = "C:\\Users\\Girish-Nair\\Documents\\GitHub\\cosmicnode\\jenkins-slave-tester1\\docker_multi_build"
-CA_CERTIFICATE_PATH = os.path.join('/home', 'cosmic-node')
+CA_CERTIFICATE_PATH = os.getcwd()
 SERIAL_RX_BAUD_RATE = 1000000
 MQTT_MESSAGE_RX = False
