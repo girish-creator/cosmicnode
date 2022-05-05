@@ -32,7 +32,7 @@ def run(file_name=None, verbosity=2):
 
 
 if __name__ == "__main__":
-    module_names = ['test_api.py', 'test_all.py']
+    module_names = ['test_api.py', 'test_serial.py', 'test_all.py']
     for module_name in module_names:
         result_file_name = "result_" + module_name.split('.')[0] + ".txt"
         path = str(configuration.ROOT_PATH + '\\tests' + '\\results\\' + result_file_name)
