@@ -24,13 +24,13 @@ RUN apt-get install -y build-essential
 # make a clean apt
 RUN apt clean
 
-#WORKDIR /app
+WORKDIR /app
 
 # copy files from local host to docker container
 COPY requirements.txt requirements.txt
 RUN pip3 install -r requirements.txt
 
-COPY . .
+COPY . /app/
 
 # run a few commands
 #CMD [ "python3", "-m" , "flask", "run", "--host=0.0.0.0"]
