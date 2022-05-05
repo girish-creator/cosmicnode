@@ -32,7 +32,7 @@ RUN pip3 install -r requirements.txt
 
 COPY . /app/
 
-# run a few commands
-#CMD [ "python3", "-m" , "flask", "run", "--host=0.0.0.0"]
-RUN cd ..
-CMD [ "python3", "../runner.py"]
+## run a few commands
+##CMD [ "python3", "-m" , "flask", "run", "--host=0.0.0.0"]
+#RUN cd ..
+#CMD [ "python3", "../runner.py"]
