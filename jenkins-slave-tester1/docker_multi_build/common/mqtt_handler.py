@@ -1,4 +1,4 @@
-import configuration
+from common import configuration
 import ssl
 import paho.mqtt.client as paho
 import logging

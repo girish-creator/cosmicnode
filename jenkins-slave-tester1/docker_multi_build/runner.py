@@ -22,12 +22,11 @@ def run(file_name=None, verbosity=2):
                                                pattern='test_*.py', top_level_dir=configuration.ROOT_PATH)
 
     print(tests)
+    if os.path.exists('./results.txt'):
+        os.remove('./results.txt')
     with open('./results.txt', 'a') as output:
         unittest.TextTestRunner(output, verbosity=verbosity).run(tests)
     print('completed')
-
-    with open('./results.txt', 'r') as output:
-        print(output.read())
 
 
 if __name__ == "__main__":
