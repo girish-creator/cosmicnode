@@ -34,4 +34,4 @@ COPY . /app/
 
 # run a few commands
 #CMD [ "python3", "-m" , "flask", "run", "--host=0.0.0.0"]
-CMD [ "python3", "./runner.py"]
+CMD [ "python3", "runner.py"]
