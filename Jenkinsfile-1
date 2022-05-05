@@ -11,7 +11,7 @@ pipeline {
             }
             steps {
                 sh 'python3 --version'
-                sh 'python3 jenkins-slave-tester1/docker_multi_build/runner.py'
+                sh 'sudo python3 jenkins-slave-tester1/docker_multi_build/runner.py'
             }
         }
     }
