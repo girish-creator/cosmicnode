@@ -6,7 +6,7 @@ import sys
 
 def run(file_name=None, output=sys.stderr, verbosity=2):
     print("Module Name: \n" + file_name)
-    path = os.path.join(configuration.ROOT_PATH, 'tests')
+    path = os.path.join(configuration.ROOT_PATH, 'jenkins-slave-tester1', 'docker_multi_build', 'tests')
     print("PATH: \n" + path)
     if os.path.exists(path):
         print("Path found\n")
@@ -14,11 +14,11 @@ def run(file_name=None, output=sys.stderr, verbosity=2):
         print("Path not found\n")
     if file_name is not None:
         # Only run the tests from the given module
-        tests = unittest.TestLoader().discover(start_dir=os.path.join(configuration.ROOT_PATH, 'tests'),
+        tests = unittest.TestLoader().discover(start_dir=os.path.join(configuration.ROOT_PATH, 'jenkins-slave-tester1', 'docker_multi_build', 'tests'),
                                                pattern=file_name, top_level_dir=configuration.ROOT_PATH)
     else:
         # run all the tests from all the test_* files
-        tests = unittest.TestLoader().discover(start_dir=os.path.join(configuration.ROOT_PATH, 'tests'),
+        tests = unittest.TestLoader().discover(start_dir=os.path.join(configuration.ROOT_PATH, 'jenkins-slave-tester1', 'docker_multi_build', 'tests'),
                                                pattern='test_*.py', top_level_dir=configuration.ROOT_PATH)
     print(tests)
     unittest.TextTestRunner(output, verbosity=verbosity).run(tests)
