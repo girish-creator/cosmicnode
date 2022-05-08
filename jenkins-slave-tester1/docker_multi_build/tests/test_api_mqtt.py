@@ -23,7 +23,7 @@ class MqttTests(unittest.TestCase):
 
     def test_cosmic_api1(self):
         response = requests.get('https://chercher.tech/sample/api/product/read?id=90')
-        response = requests.post('http://192.168.68.107/rpc/Command.PWM, headers={Content-Type: text/plain}, data={"cmd":51,"address":32827,"params":[1,1,0,0,0]}')
+        response = requests.post('http://192.168.1.27/rpc/Command.PWM, headers={Content-Type: text/plain}, data={"cmd":51,"address":32827,"params":[1,1,0,0,0]}')
         self.assertEquals(response.status_code, {'payload': '{"cmd":51,"address":32827,"params":[1,1,0,0,0]}', 'headers': "{'Content-Type': 'text/plain'}"})
 
         mqtt_client_0 = mqtt_handler.MqttHandler()

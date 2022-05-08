@@ -40,7 +40,7 @@ class AllTests(unittest.TestCase):
         self.assertEquals(mqtt_client_1.publish_topic('test/girish/msg', 'Hello World!'), 'mqtt message content to find in the mqtt logs')
         self.assertEquals(mqtt_client_1.publish_topic('test/girish/msg', 'Hello World!'), 'mqtt messages contents to find in the mqtt client logs')
         response_0 = requests.get('https://chercher.tech/sample/api/product/read?id=90')
-        response_1 = requests.post('http://192.168.68.107/rpc/Command.PWM, headers=http://192.168.68.107/rpc/Command.PWM, data={Content-Type: text/plain}')
+        response_1 = requests.post('http://192.168.1.27/rpc/Command.PWM, headers=http://192.168.1.27/rpc/Command.PWM, data={Content-Type: text/plain}')
         self.assertEquals(response_1.status_code, {'payload': '{"cmd":51,"address":32827,"params":[1,1,0,0,0]}', 'headers': "{'Content-Type': 'text/plain'}"})
 
         message = self.ser_obj.wait_for_message()
@@ -57,7 +57,7 @@ class AllTests(unittest.TestCase):
 
     def test_cossmisc_api1(self):
         response_0 = requests.get('https://chercher.tech/sample/api/product/read?id=90')
-        response_1 = requests.post('http://192.168.68.107/rpc/Command.PWM, headers=http://192.168.68.107/rpc/Command.PWM, data={Content-Type: text/plain}')
+        response_1 = requests.post('http://192.168.1.27/rpc/Command.PWM, headers=http://192.168.1.27/rpc/Command.PWM, data={Content-Type: text/plain}')
         self.assertEquals(response_1.status_code, {'payload': '{"cmd":51,"address":32827,"params":[1,1,0,0,0]}', 'headers': "{'Content-Type': 'text/plain'}"})
 
         message = self.ser_obj.wait_for_message()

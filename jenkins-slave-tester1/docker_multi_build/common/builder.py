@@ -390,5 +390,5 @@ if __name__ == "__main__":
                                                                     "client logs"}]}
                          ],
                 }
-    test_builder_obj = TestBuilder(test_name='cossmsisc_api1', argument_dict=args_all)
+    test_builder_obj = TestBuilder(test_name='test_modbus_unique', argument_dict=args_api_serial)
     test_builder_obj.run()
