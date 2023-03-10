@@ -1,0 +1,14 @@
+{
+    "name": "Device profile3",
+    "versionNumber": 1.9,
+    "type": 1,
+    "properties_system": {
+        "noOfChannels": 3,
+        "dimming_type": "PWM/0-10V/Digital/DALI (In both device profile and device details",
+        "module_type": null,
+        "module_vendor": null
+    },
+    "device_properties": [
+        "627b3b3659e2686ff721c8m1"
+    ]
+}

@@ -1,0 +1,27 @@
+{
+
+            "_id": "62ecdde902ad9e3139ec7d86",
+            "name": "asset23",
+            "properties": {
+                "dimmable": true,
+                "sensorIntegrated": true,
+                "color": "blue",
+                "channelNos": 2,
+                "assetChannelProperties": [
+                    {
+                        "_id": "62eb3c6f5ded5e474e2f2338",
+                        "channelColor": "Blue",
+                        "power": "100watts",
+                        "lumens": "800"
+                    },
+                    {
+                        "_id": "62eb3e1e5ded5e474e2f2361",
+                        "channelColor": "Blue",
+                        "power": "100watts",
+                        "lumens": "800"
+                    }
+                ],
+                "CRI": "60%",
+                "depth": "1100"
+            }
+}

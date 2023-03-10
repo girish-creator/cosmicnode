@@ -1,0 +1,26 @@
+pipeline {
+    agent any
+    stages {
+        stage('Build') {
+            agent {
+                docker {
+                    image 'cosmicnode/node-tester:v5'
+                    // Run the container on the node specified at the top-level of the Pipeline, in the same workspace, rather than on a new node entirely:
+                    reuseNode true
+                    args '--network="host"'
+                }
+            }
+            steps {
+                sh 'python3 --version'
+                script {
+                    try {
+                          sh 'python3 source/new_runner.py -product infinity -type_of_tests api_tests -test_file_name test_tenant'
+                    } catch (Exception e) {
+                          echo 'Exception occurred: ' + e.toString()
+                          sh 'exit(1)'
+                    }
+                }
+            }
+        }
+    }
+}

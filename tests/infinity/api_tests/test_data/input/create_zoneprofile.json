@@ -1,0 +1,13 @@
+{
+    "name": "zone-cosmic",
+    "controlType": "automatic",
+    "motionSensor": "enable",
+    "holdTime": 20,
+     "dayLightSensor": "enable",
+    "dimTime": "2minutes",
+    "DLRUpdateSteps": 2,
+    "luxLevelSetPoint": 300,
+    "DLR_Threshold": 500,
+    "DLR_UpdateintervelTime": 30,
+    "status": "active"
+}

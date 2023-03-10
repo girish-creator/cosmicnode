@@ -1,0 +1,20 @@
+{
+            "name": "device profile2",
+            "versionNumber": 1.1,
+            "type": "sensor",
+            "properties_system": {
+                "noOfChannels": 2,
+                "dimming_type": "PWM/0-10V/Digital/DALI (In both device profile and device details",
+                "module_type": null,
+                "module_vendor": null,
+                "chip_type": null,
+                "radioType": "BLE",
+                "channels": [
+                    "62bab92c35d1323762c17da7",
+                    "62c2cf81e8fa845786b38ffe"
+                ]
+            },
+            "device_properties": [
+                "627b3b3659e2686ff721c9d6"
+            ]
+}

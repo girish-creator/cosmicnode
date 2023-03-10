@@ -1,0 +1,27 @@
+{
+	"levels": [
+		{
+			"levelTypeInfo": {
+				"name": "technopark",
+				"image": "image.jpeg",
+				"description": "technopark"
+			},
+			"tenantId": "62e2802e364f15c01b0ad4d7",
+			"parentId": "628f6059399f8eb0a393daec",
+			"meshNetwork": {
+				"name": "network1",
+				"username": "shaiju",
+				"password": ""
+			},
+			"levelTypeId": "62a9aa33fbc74b882d38ed6f",
+			"children": true,
+			"plan": {
+				"backgroundImage": "http://app.pundreek.com/cos/assets/fpl2.jpg",
+				"imageHeight": 900,
+				"imageWidth": 500,
+				"floorWidthInMeter": 24,
+				"floorHeightInMeter": 18
+			}
+		}
+	]
+}

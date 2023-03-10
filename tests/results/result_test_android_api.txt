@@ -1,0 +1,6 @@
+test_new_android (tests.test_android_api.AndroidApiTests) ... ok
+
+----------------------------------------------------------------------
+Ran 1 test in 0.477s
+
+OK

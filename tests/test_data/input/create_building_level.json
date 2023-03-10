@@ -1,0 +1,16 @@
+{
+    "levelTypeInfo": {
+        "name": "infopark-building",
+        "image": "http://app.pundreek.com/cos/assets/fpl2.jpg",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor"
+    },
+    "levelTypeId": "62a9aa23fbc74b882d38ed6d",
+    "parentId":"< parent site Id >",
+    "tenantId": "628f6c3f969ec492335e2107",
+    "locationAddress": "5658AE Eindhoven Netherlands",
+    "contact": "email@xyz.com",
+    "geoLocation": {
+        "latitude": 51.24,
+        "longitude": 5.24
+    }
+}

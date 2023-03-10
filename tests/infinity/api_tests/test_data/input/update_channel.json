@@ -1,0 +1,11 @@
+{
+    "name":"channelupdated",
+    "channelType":"hjjsdjhsd",
+    "channelIdentifier":"jsdhijshd763872",
+    "properties":{
+        "max_power_per_channel": 68,
+        "max_ppf_per_channel": 79,
+        "colour_percentage": 99,
+        "wavelength": 2222
+    }
+}

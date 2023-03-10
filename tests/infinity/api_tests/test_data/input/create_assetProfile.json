@@ -1,0 +1,38 @@
+{
+            "name": "asset23",
+            "deviceProfileId": "62eb3f965ded5e474e2f2364",
+            "description": "Single Channel White 2x2 Panel",
+            "deviceType": "Light",
+            "x": 47.8,
+            "y": 51.2,
+            "properties": {
+                "dimmable": true,
+                "sensorIntegrated": true,
+                "color": "blue",
+                "channelNos": 1,
+                "assetChannelProperties": [
+                    {
+                        "_id": "62eb3c6f5ded5e474e2f2338",
+                        "channelColor": "Blue",
+                        "power": "100watts",
+                        "lumens": "800"
+                    }
+                ],
+                "lumens": "800lm",
+                "CRI": "70%",
+                "beamAngle": 90,
+                "power": "700W",
+                "current": "500mA",
+                "voltage": "450V",
+                "modelNo": "xxxxx",
+                "lampLife": "5000hrs",
+                "shape": "square",
+                "asstIcon": "squarelamp.png",
+                "length": "464",
+                "width": "500",
+                "depth": "1200",
+                "mountingType": "cleing mount"
+            }
+
+
+}

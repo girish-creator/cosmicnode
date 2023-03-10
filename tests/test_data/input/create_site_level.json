@@ -1,0 +1,15 @@
+{
+   "levelTypeInfo": {
+       "name": "Grasrijk",
+       "image": "http://app.pundreek.com/cos/assets/fpl2.jpg",
+       "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor"
+   },
+   "levelTypeId": "62e25b03364f15c01b0acdbb",
+   "tenantId": "62e516435213918b0f411246",
+   "locationAddress": "123",
+   "contact": "123",
+   "geoLocation": {
+           "latitude": 56.33,
+           "longitude": 54.12
+       }
+}

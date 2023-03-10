@@ -1,0 +1,22 @@
+{
+	"levels": [
+		{
+			"name": "Paris-AMS-Test",
+			"tenantId": "62727b7abcb7f752f610373a",
+			"parentId": "628f6059399f8eb0a393daec",
+			"meshNetwork": {
+				"name": "network1",
+				"username": "shaiju",
+				"password": ""
+			},
+			"children": true,
+			"plan": {
+				"backgroundImage": "http://app.pundreek.com/cos/assets/fpl2.jpg",
+				"imageHeight": 900,
+				"imageWidth": 500,
+				"floorWidthInMeter": 24,
+				"floorHeightInMeter": 18
+			}
+		}
+	]
+}
